@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n8n Chat</title>
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    <style>
+        :root {
+            /* Dark theme colors matching Notion */
+            --chat--color-primary: #2383e2;
+            --chat--color-primary-shade-50: #1e73cc;
+            --chat--color-primary-shade-100: #1a63b7;
+            --chat--color-secondary: #35c78b;
+            --chat--color-secondary-shade-50: #2eb87a;
+            --chat--color-white: #ffffff;
+            --chat--color-light: #191919;
+            --chat--color-light-shade-50: #2f2f2f;
+            --chat--color-light-shade-100: #373737;
+            --chat--color-medium: #505050;
+            --chat--color-dark: #ffffff;
+            --chat--color-disabled: #787878;
+            --chat--color-typing: #a0a0a0;
+            
+            /* Layout */
+            --chat--spacing: 1rem;
+            --chat--border-radius: 8px;
+            --chat--transition-duration: 0.15s;
+            
+            /* Window settings */
+            --chat--window--width: 400px;
+            --chat--window--height: 600px;
+            
+            /* Header styling */
+            --chat--header--padding: 1.25rem;
+            --chat--header--background: #191919;
+            --chat--header--color: #ffffff;
+            --chat--header--border-top: none;
+            --chat--header--border-bottom: 1px solid #373737;
+            
+            /* Typography */
+            --chat--heading--font-size: 1.25rem;
+            --chat--subtitle--font-size: 0.875rem;
+            --chat--subtitle--line-height: 1.5;
+            
+            /* Input area */
+            --chat--textarea--height: 48px;
+            
+            /* Messages */
+            --chat--message--font-size: 0.875rem;
+            --chat--message--padding: 0.75rem 1rem;
+            --chat--message--border-radius: 8px;
+            --chat--message-line-height: 1.5;
+            
+            /* Bot messages */
+            --chat--message--bot--background: #2f2f2f;
+            --chat--message--bot--color: #e6e6e6;
+            --chat--message--bot--border: none;
+            
+            /* User messages */
+            --chat--message--user--background: #2383e2;
+            --chat--message--user--color: #ffffff;
+            --chat--message--user--border: none;
+            
+            /* Code blocks */
+            --chat--message--pre--background: rgba(255, 255, 255, 0.05);
+            
+            /* Toggle button */
+            --chat--toggle--background: #2383e2;
+            --chat--toggle--hover--background: #1e73cc;
+            --chat--toggle--active--background: #1a63b7;
+            --chat--toggle--color: #ffffff;
+            --chat--toggle--size: 56px;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #191919;
+        }
+        
+        #n8n-chat {
+            width: 100%;
+            height: 100vh;
+        }
+        
+        /* Additional customizations */
+        .n8n-chat__header {
+            backdrop-filter: blur(10px);
+        }
+        
+        .n8n-chat__messages {
+            background: #191919;
+        }
+        
+        .n8n-chat__input-container {
+            background: #191919;
+            border-top: 1px solid #373737;
+        }
+        
+        .n8n-chat__input {
+            background: #2f2f2f !important;
+            border: 1px solid #373737 !important;
+            color: #e6e6e6 !important;
+        }
+        
+        .n8n-chat__input:focus {
+            border-color: #2383e2 !important;
+            outline: none !important;
+        }
+        
+        .n8n-chat__button {
+            background: #2383e2 !important;
+            border: none !important;
+        }
+        
+        .n8n-chat__button:hover {
+            background: #1e73cc !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="n8n-chat"></div>
+    
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+        
+        createChat({
+            webhookUrl: 'https://n8n-pluf.onrender.com/webhook/0ccd6545-1494-4378-b902-766438aa7ed4',
+            mode: 'fullscreen',
+            showWelcomeScreen: true,
+            initialMessages: [
+                'Welcome to Projects Assistant 🎯',
+                'I can help you manage tasks, track progress, and answer questions about your projects. How can I assist you today?'
+            ],
+            i18n: {
+                en: {
+                    title: 'Projects Assistant',
+                    subtitle: 'Your AI-powered project management helper',
+                    footer: '',
+                    getStarted: 'Start New Chat',
+                    inputPlaceholder: 'Ask about your projects, tasks, or deadlines...'
+                }
+            }
+        });
+    </script>
+</body>
+</html>
